@@ -1,0 +1,32 @@
+.detailPage {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px auto; /* Auto untuk membuat cardDetail berada di tengah */
+    width: 100%; /* Menyesuaikan lebar maksimal cardDetail */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; /* Untuk membuat kontennya berada di tengah */
+  }
+  
+  .detailPage img {
+    max-width: 10%;
+    height: auto;
+    margin-bottom: 8px;
+  }
+  
+  .detailPage h3 {
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .detailPage p {
+    margin-bottom: 4px;
+    color: #666;
+  }
+  
+  /* Media query untuk perangkat mobile */
+  @media only screen and (max-width: 400px) {
+    .detailPage {
+      width: 100%; /* Membuat cardDetail full-width pada perangkat mobile */
+    }
+  }
