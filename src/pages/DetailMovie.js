@@ -1,72 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
- 
-// Components
-import Detail from "../DetailPage";
-import Modal from "../components/modal";
- 
+import DetailPage from "../DetailPage";
+
+import "../DetailPage.css"; // Impor gaya CSS Card
+
 export default function DetailMovie() {
-  let { detailId } = useParams();
-  const [data, setData] = useState(detailId);
-  const [detail, setDetail] = useState(null);
-  const [isLoaded, setisLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
- 
-  // Modal
-  const [modalShow, setModalShow] = useState(false);
-  const [modalItem, setModalItem] = useState(null);
- 
+  const [detailData, setDetailData] = useState(null);
+  const { id } = useParams();
+
   useEffect(() => {
-    const fetchDetail = async () => {
-      setIsLoading(true);
+    const fetchDetailData = async () => {
       try {
         const response = await axios.get(
-          "https://imdb8.p.rapidapi.com/title/get-plots",
+          `https://imdb8.p.rapidapi.com/title/get-details`,
           {
-            params: { tconst: data },
+            params: { tconst: id },
             headers: {
+              "X-RapidAPI-Key": "ac8c799208msh88d8923c96bf91ep117735jsn9e73a01444bc",
               "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
-              "X-RapidAPI-Key": "ee4ea94c99mshb4dcf3716227e3fp1fd465jsna385dd04617c", // Ganti dengan kunci API yang valid
             },
           }
         );
- 
         if (response.status === 200) {
-          setDetail(response.data);
-          setisLoaded(true);
-          setIsLoading(false);
+          setDetailData(response.data);
         }
       } catch (err) {
         console.error(err);
-        setIsLoading(false);
       }
     };
- 
-    if (!isLoaded) {
-      fetchDetail();
+
+    if (id) {
+      fetchDetailData();
     }
-  }, [data, isLoaded]); // Tambahkan dependensi data dan isLoaded ke useEffect
- 
-  const handleClick = () => {
-    setModalShow(!modalShow);
-    setModalItem(detail); // Menggunakan detail sebagai item
-  };
- 
+  }, [id]);
+
   return (
-    <main>
-      <div className="detail-container">
-        {!detail || isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <Detail data={detail} onClick={handleClick} />
-        )}
-      </div>
-      <Modal
-        data={modalItem}
-        isShow={modalShow}
-        onCancel={() => setModalShow(false)}
-      />
-    </main>
+    <div>
+      {detailData ? (
+        <DetailPage data={detailData} />
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
   );
 }

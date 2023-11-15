@@ -15,7 +15,7 @@ const DetailPage = ({ data }) => {
       {data.numberOfEpisodes && (
         <p>Jumlah Episode: {data.numberOfEpisodes}</p>
       )}
-      {data.seriesEndYear && <p>Tahun Selesai: {data.seriesEndYear}</p>}
+      {data.seriesStartYear && <p>Tahun Rilis: {data.seriesStartYear}</p>}
     </div>
   );
 };

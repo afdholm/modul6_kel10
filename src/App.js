@@ -4,7 +4,6 @@ import ListMovie from "./pages/ListMovie";
 import DetailMovie from "./pages/DetailMovie";
 import Profile from "./pages/Profile";
 
-// Components
 import Header from "./components/header";
 import Navbar from "./Navbar";
 

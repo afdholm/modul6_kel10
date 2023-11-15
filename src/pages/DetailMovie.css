@@ -1,0 +1,35 @@
+.detail-movie {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+  }
+  
+  .detail-movie h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .detail-movie img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .detail-movie p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  .detail-movie a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .detail-movie a:hover {
+    text-decoration: underline;
+  }
+  

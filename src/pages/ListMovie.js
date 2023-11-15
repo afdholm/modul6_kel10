@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
-// Components
 import Card from "../components/card";
 import Modal from "../components/modal";
+import { Link } from "react-router-dom";
 
 
-export default function LandingPage() {
+export default function ListMovie() {
     const [data, setData] = useState(null);
     const [isLoaded, setisLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [query, setQuery] = useState("apes");
     
-    // Modal
     const [modalShow, setModalShow] = useState(false);
     const [modalItem, setModalItem] = useState(null);
     
@@ -66,11 +64,11 @@ export default function LandingPage() {
                 <p>Loading...</p>
             ) : (
                 <div className="card-container">
-                {data.d.map((item, index) => {
-                    return (
-                    <Card data={item} key={index} onClick={()=>handleClick(item)} />
-                    );
-                })}
+                {data.d.map((item, index) => (
+                    <Link to={`/detail/${item.id}`} key={index}>
+                    <Card data={item} onClick={() => handleClick(item)} />
+                    </Link>
+                ))}
                 </div>
             )}
             <Modal
